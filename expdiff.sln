@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "expdiff", "expdiff\expdiff.vcxproj", "{1833E1B4-3F72-45DA-AB0F-53C49E61A686}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "witutils", "witutils\witutils.vcxproj", "{6C290411-0E80-4EC5-BFAB-2A9206489474}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,8 +23,19 @@ Global
 		{1833E1B4-3F72-45DA-AB0F-53C49E61A686}.Release|x64.Build.0 = Release|x64
 		{1833E1B4-3F72-45DA-AB0F-53C49E61A686}.Release|x86.ActiveCfg = Release|Win32
 		{1833E1B4-3F72-45DA-AB0F-53C49E61A686}.Release|x86.Build.0 = Release|Win32
+		{6C290411-0E80-4EC5-BFAB-2A9206489474}.Debug|x64.ActiveCfg = Debug|x64
+		{6C290411-0E80-4EC5-BFAB-2A9206489474}.Debug|x64.Build.0 = Debug|x64
+		{6C290411-0E80-4EC5-BFAB-2A9206489474}.Debug|x86.ActiveCfg = Debug|Win32
+		{6C290411-0E80-4EC5-BFAB-2A9206489474}.Debug|x86.Build.0 = Debug|Win32
+		{6C290411-0E80-4EC5-BFAB-2A9206489474}.Release|x64.ActiveCfg = Release|x64
+		{6C290411-0E80-4EC5-BFAB-2A9206489474}.Release|x64.Build.0 = Release|x64
+		{6C290411-0E80-4EC5-BFAB-2A9206489474}.Release|x86.ActiveCfg = Release|Win32
+		{6C290411-0E80-4EC5-BFAB-2A9206489474}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66F44C33-25C0-4A09-9E37-3949D8DE1D08}
 	EndGlobalSection
 EndGlobal
