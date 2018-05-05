@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <set>
 
 template<typename TKey, typename TValue, typename TFunc>
 void diff_maps(const std::map<TKey, TValue>& new_map, const std::map<TKey, TValue>& old_map, TFunc& func)
@@ -31,6 +32,40 @@ void diff_maps(const std::map<TKey, TValue>& new_map, const std::map<TKey, TValu
 			++old_it;
 		} else {
 			func(old_it->first, &new_it->second, &old_it->second);
+			++new_it;
+			++old_it;
+		}
+	}
+}
+
+template<typename TValue, typename TFunc>
+void diff_sets(const std::set<TValue>& new_set, const std::set<TValue>& old_set, TFunc& func)
+{
+	auto new_it = new_set.begin();
+	auto old_it = old_set.begin();
+
+	while ((new_it != new_set.end()) || (old_it != old_set.end())) {
+		int diff = 0;
+		if (new_it != new_set.end()) {
+			if (old_it != old_set.end()) {
+				if (*new_it > *old_it) {
+					diff = -1;
+				} else if (*new_it < *old_it) {
+					diff = 1;
+				}
+			} else diff = 1;
+		} else {
+			if (old_it != old_set.end())
+				diff = -1;
+		}
+
+		if (diff > 0) {
+			func(&*new_it, nullptr);
+			++new_it;
+		} else if (diff < 0) {
+			func(nullptr, &*old_it);
+			++old_it;
+		} else {
 			++new_it;
 			++old_it;
 		}
