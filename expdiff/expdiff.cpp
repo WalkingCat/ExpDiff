@@ -100,21 +100,21 @@ int wmain(int argc, wchar_t* argv[])
 	}
 
 	if (out == nullptr) {
-		printf_s("can't open %ws for output\n", output_file.c_str());
+		printf_s("can't open %ls for output\n", output_file.c_str());
 		return 0;
 	}
 
 	auto search_files = [&](bool is_new) -> map<wstring, map<wstring, wstring>> {
 		map<wstring, map<wstring, wstring>> ret;
 		const auto& files_pattern = is_new ? new_files_pattern : old_files_pattern;
-		fwprintf_s(out, L" %ws files: %ws", is_new ? L"new" : L"old", files_pattern.c_str());
+		fwprintf_s(out, L" %ls files: %ls", is_new ? L"new" : L"old", files_pattern.c_str());
 		if (((options & diffWcs) == diffWcs)) {
 			ret = find_files_wcs_ex(files_pattern);
 		} else {
 			auto files = find_files(files_pattern.c_str());
 			if (!files.empty()) ret[wstring()].swap(files);
 		}
-		fwprintf_s(out, L"%ws\n", !ret.empty() ? L"" : L" (EMPTY!)");
+		fwprintf_s(out, L"%ls\n", !ret.empty() ? L"" : L" (EMPTY!)");
 		return ret;
 	};
 
@@ -149,7 +149,7 @@ int wmain(int argc, wchar_t* argv[])
 			wchar_t printed_group_prefix = L' ';
 			auto print_group_name = [&](const wchar_t prefix) {
 				if (!printed_group_name) {
-					fwprintf_s(out, L"\n %wc %ws (\n", prefix, group_name.c_str());
+					fwprintf_s(out, L"\n %lc %ls (\n", prefix, group_name.c_str());
 					printed_group_name = true;
 					printed_group_prefix = prefix;
 				}
@@ -165,7 +165,7 @@ int wmain(int argc, wchar_t* argv[])
 							if (printed_previous_file_name) {
 								fwprintf_s(out, L"\n");
 							}
-							fwprintf_s(out, L"   %wc %ws\n", prefix, file_name.c_str());
+							fwprintf_s(out, L"   %lc %ls\n", prefix, file_name.c_str());
 							printed_previous_file_name = printed_file_name = true;
 						}
 					};
@@ -193,7 +193,7 @@ int wmain(int argc, wchar_t* argv[])
 			);
 
 			if (printed_group_name)
-				fwprintf_s(out, L" %wc )\n", printed_group_prefix);
+				fwprintf_s(out, L" %lc )\n", printed_group_prefix);
 		}
 	);
 

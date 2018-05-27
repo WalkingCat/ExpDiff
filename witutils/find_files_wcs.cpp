@@ -85,6 +85,7 @@ map<wstring, map<wstring, wstring>> find_files_wcs(const wstring & directory, co
 						wstring lang = match[2].str();
 						if (lang != L"none") key += L"_" + lang;
 					}
+					for (auto& c : key) c = towlower(c);
 
 					PathRemoveFileSpec(path);
 					PathCombine(path, path, fd.cFileName);
