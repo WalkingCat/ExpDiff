@@ -106,9 +106,9 @@ int wmain(int argc, wchar_t* argv[])
 		const auto& files_pattern = is_new ? new_files_pattern : old_files_pattern;
 		fwprintf_s(out, L" %ls files: %ls", is_new ? L"new" : L"old", files_pattern.c_str());
 		if (((options & diffWcs) == diffWcs)) {
-			ret = find_files_wcs_ex(files_pattern);
+			ret = find_files_wcs_ex(files_pattern, std::wstring_view());
 		} else {
-			ret = find_files_ex(files_pattern, (options & diffRec) == diffRec);
+			ret = find_files_ex(files_pattern, (options & diffRec) == diffRec, std::wstring_view());
 		}
 		fwprintf_s(out, L"%ls\n", !ret.empty() ? L"" : L" (EMPTY!)");
 		return ret;
